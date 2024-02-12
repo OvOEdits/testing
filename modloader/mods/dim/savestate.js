@@ -164,7 +164,11 @@
         }
         if (event.code === "KeyN") {
             if (event.shiftKey) {
+                if (runtime.running_layout.name.startsWith("Level")){
                 runtime.changelayout = runtime.layouts["Level " + String(parseInt(runtime.running_layout.name.split(' ')[1]) + 1)]
+                }else if (runtime.running_layout.name.startsWith("Old Level")){
+                    runtime.changelayout = runtime.layouts["Old Level " + String(parseInt(runtime.running_layout.name.split(' ')[2]) + 1)]
+                }
                 setTimeout(() => {
                     notify("Going to next level bypass (Shift + N)", "Next Level");
                 }, 300);
@@ -184,7 +188,11 @@
         }
         if (event.code === "KeyB") {
             if (event.shiftKey) {
-                runtime.changelayout = runtime.layouts["Level " + String(parseInt(runtime.running_layout.name.split(' ')[1]) - 1)]
+                if (runtime.running_layout.name.startsWith("Level")){
+                    runtime.changelayout = runtime.layouts["Level " + String(parseInt(runtime.running_layout.name.split(' ')[1]) - 1)]
+                    }else if (runtime.running_layout.name.startsWith("Old Level")){
+                        runtime.changelayout = runtime.layouts["Old Level " + String(parseInt(runtime.running_layout.name.split(' ')[2]) - 1)]
+                    }
                 setTimeout(() => {
                     notify("Going to next level (Shift + N)", "Next Level");
                 }, 300);
